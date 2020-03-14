@@ -1,0 +1,81 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.body {
+	width: 100vw;
+	height: 100vh;
+}
+
+.container {
+	background-color: aqua;
+	width: 420px;
+	height: 330px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cell {
+	width: 30px;
+	height: 30px;
+	float: left;
+	background-color: white;
+	box-shadow: 0 0 0 1px black;
+}
+
+.cell.active {
+	background-color: chartreuse !important;
+}
+
+.cell.food {
+	background-color: aqua !important;
+}
+
+.die {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(181, 199, 214, 0.288);
+}
+
+.die > div {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.die-title {
+	text-align: center;
+	font-family: fantasy;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.die-btn {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+.die-btn:active {
+	transform: translate(-45%, 15%) scale(0.95);
+}
+
+.score {
+	position: absolute;
+	background-color: white !important;
+	left: 50%;
+	transform: translate(-50%, -3rem);
+	font-family: fantasy;
+	font-size: 1.5rem;
+}
