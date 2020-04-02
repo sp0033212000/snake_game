@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Context as SnakeContext } from "../context/SnakeContext";
 import useInterval from "../hooks/useInterval";
 import _ from "lodash";
@@ -16,12 +16,11 @@ const Container = ({ children }) => {
 		start
 	} = useContext(SnakeContext);
 
+	const ref = useRef();
+
 	useEffect(() => {
-		document.addEventListener("keydown", onKeyDownHandler);
-		return () => {
-			document.removeEventListener("keydown", onKeyDownHandler);
-		};
-	}, [direct, changeDirect, relay]);
+		ref.current.focus();
+	}, []);
 
 	useEffect(() => {
 		const length = snake.length;
@@ -74,7 +73,7 @@ const Container = ({ children }) => {
 	useInterval(move, relay);
 
 	return (
-		<div className="body">
+		<div className="body" ref={ref} tabIndex="0" onKeyDown={onKeyDownHandler}>
 			<div className="container">
 				<div className="score">Your Score: {snake.length - 1}</div>
 				{children}

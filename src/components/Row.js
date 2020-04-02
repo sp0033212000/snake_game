@@ -6,6 +6,7 @@ const Row = ({ yaxis }) => {
 	const {
 		state: { snake, food }
 	} = useContext(SnakeContext);
+
 	const row = useMemo(() => {
 		return [...Array(14)].map((v, i) => {
 			let active = false;
@@ -25,4 +26,7 @@ const Row = ({ yaxis }) => {
 	return <div className="row">{row}</div>;
 };
 
-export default Row;
+export default React.memo(Row, (prev, next) => {
+	console.log("prev", prev);
+	console.log("next", next);
+});

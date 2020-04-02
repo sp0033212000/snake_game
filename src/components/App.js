@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { Context as SnakeContext } from "../context/SnakeContext";
 import "../css/style.css";
 import Container from "./Container";
@@ -23,12 +23,14 @@ const App = () => {
 		);
 	};
 
+	const Rows = useMemo(() => {
+		return [...Array(11)].map((v, i) => <Row key={i} yaxis={i} />);
+	}, []);
+
 	return (
 		<Container>
 			{relay === null && uiResetBtn()}
-			{[...Array(11)].map((v, i) => (
-				<Row key={i} yaxis={i} />
-			))}
+			{Rows}
 		</Container>
 	);
 };

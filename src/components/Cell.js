@@ -8,4 +8,4 @@ const Cell = ({ active, food }) => {
 	);
 };
 
-export default Cell;
+export default React.memo(Cell);
