@@ -49,7 +49,10 @@ const Container = ({ children }) => {
 		const directObj = { 37: "left", 38: "top", 39: "right", 40: "down" };
 		const { keyCode } = e;
 
-		if (keyCode === 13 && relay === null) {
+		if (
+			(keyCode === 13 && relay === null) ||
+			(keyCode >= 37 && keyCode <= 40 && relay === null)
+		) {
 			start();
 		}
 
@@ -77,6 +80,36 @@ const Container = ({ children }) => {
 			<div className="container">
 				<div className="score">Your Score: {snake.length - 1}</div>
 				{children}
+			</div>
+			<div className="controller">
+				<div
+					onClick={() => onKeyDownHandler({ keyCode: 38 })}
+					className="arrow-container top"
+				>
+					<div className="arrow" />
+					<div className="arrow-root" />
+				</div>
+				<div
+					onClick={() => onKeyDownHandler({ keyCode: 37 })}
+					className="arrow-container left"
+				>
+					<div className="arrow" />
+					<div className="arrow-root" />
+				</div>
+				<div
+					onClick={() => onKeyDownHandler({ keyCode: 39 })}
+					className="arrow-container right"
+				>
+					<div className="arrow" />
+					<div className="arrow-root" />
+				</div>
+				<div
+					onClick={() => onKeyDownHandler({ keyCode: 40 })}
+					className="arrow-container bottom"
+				>
+					<div className="arrow" />
+					<div className="arrow-root" />
+				</div>
 			</div>
 		</div>
 	);
