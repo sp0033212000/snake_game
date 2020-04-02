@@ -1,10 +1,4 @@
-import React, {
-	cloneElement,
-	useContext,
-	useState,
-	useEffect,
-	useMemo
-} from "react";
+import React, { useContext, useMemo } from "react";
 import { Context as SnakeContext } from "../context/SnakeContext";
 import Cell from "./Cell";
 
@@ -12,7 +6,6 @@ const Row = ({ yaxis }) => {
 	const {
 		state: { snake, food }
 	} = useContext(SnakeContext);
-
 	const row = useMemo(() => {
 		return [...Array(14)].map((v, i) => {
 			let active = false;

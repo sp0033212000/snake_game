@@ -1,22 +1,22 @@
 import React, { useContext } from "react";
 import { Context as SnakeContext } from "../context/SnakeContext";
-import "./css/style.css";
+import "../css/style.css";
 import Container from "./Container";
 import Row from "./Row";
 
 const App = () => {
 	const {
-		state: { stop },
-		reset
+		state: { relay },
+		start
 	} = useContext(SnakeContext);
 
 	const uiResetBtn = () => {
 		return (
 			<div className="die">
 				<div>
-					<div className="die-title">You Dead</div>
-					<button onClick={reset} className="die-btn">
-						Reset
+					<div className="die-title">Start Game</div>
+					<button onClick={start} className="die-btn">
+						Start
 					</button>
 				</div>
 			</div>
@@ -25,7 +25,7 @@ const App = () => {
 
 	return (
 		<Container>
-			{stop && uiResetBtn()}
+			{relay === null && uiResetBtn()}
 			{[...Array(11)].map((v, i) => (
 				<Row key={i} yaxis={i} />
 			))}

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context as SnakeContext } from "../context/SnakeContext";
 import useInterval from "../hooks/useInterval";
 import _ from "lodash";
@@ -7,14 +7,21 @@ let LAST_LOCATION = {};
 
 const Container = ({ children }) => {
 	const {
-		state: { direct, snake, foodExsit, food, stop },
+		state: { direct, snake, foodExsit, food, relay, changeDirect },
 		changeDirection,
 		move,
 		createFood,
 		eatFood,
 		setStop,
-		reset
+		start
 	} = useContext(SnakeContext);
+
+	useEffect(() => {
+		document.addEventListener("keydown", onKeyDownHandler);
+		return () => {
+			document.removeEventListener("keydown", onKeyDownHandler);
+		};
+	}, [direct, changeDirect, relay]);
 
 	useEffect(() => {
 		const length = snake.length;
@@ -43,11 +50,16 @@ const Container = ({ children }) => {
 		const directObj = { 37: "left", 38: "top", 39: "right", 40: "down" };
 		const { keyCode } = e;
 
-		if (keyCode === 13) {
-			reset();
+		if (keyCode === 13 && relay === null) {
+			start();
 		}
 
-		if (directObj[keyCode] !== direct) {
+		if (
+			directObj[keyCode] !== direct &&
+			keyCode >= 37 &&
+			keyCode <= 40 &&
+			!changeDirect
+		) {
 			if (
 				(direct === "left" && keyCode !== 39) ||
 				(direct === "right" && keyCode !== 37) ||
@@ -59,10 +71,10 @@ const Container = ({ children }) => {
 		}
 	};
 
-	useInterval(move, !stop ? 250 : null);
+	useInterval(move, relay);
 
 	return (
-		<div tabIndex="0" onKeyDown={onKeyDownHandler} className="body">
+		<div className="body">
 			<div className="container">
 				<div className="score">Your Score: {snake.length - 1}</div>
 				{children}
