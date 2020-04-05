@@ -13,7 +13,7 @@ const Container = ({ children }) => {
 		createFood,
 		eatFood,
 		setStop,
-		start
+		start,
 	} = useContext(SnakeContext);
 
 	const ref = useRef();
@@ -78,37 +78,41 @@ const Container = ({ children }) => {
 	return (
 		<div className="body" ref={ref} tabIndex="0" onKeyDown={onKeyDownHandler}>
 			<div className="container">
-				<div className="score">Your Score: {snake.length - 1}</div>
-				{children}
+				<div className="content">
+					<div className="score">Your Score: {snake.length - 1}</div>
+					{children}
+				</div>
 			</div>
 			<div className="controller">
-				<div
-					onClick={() => onKeyDownHandler({ keyCode: 38 })}
-					className="arrow-container top"
-				>
-					<div className="arrow" />
-					<div className="arrow-root" />
-				</div>
-				<div
-					onClick={() => onKeyDownHandler({ keyCode: 37 })}
-					className="arrow-container left"
-				>
-					<div className="arrow" />
-					<div className="arrow-root" />
-				</div>
-				<div
-					onClick={() => onKeyDownHandler({ keyCode: 39 })}
-					className="arrow-container right"
-				>
-					<div className="arrow" />
-					<div className="arrow-root" />
-				</div>
-				<div
-					onClick={() => onKeyDownHandler({ keyCode: 40 })}
-					className="arrow-container bottom"
-				>
-					<div className="arrow" />
-					<div className="arrow-root" />
+				<div className="ctrl-container">
+					<div
+						onClick={() => onKeyDownHandler({ keyCode: 38 })}
+						className="arrow-container top"
+					>
+						<div className="arrow" />
+						<div className="arrow-root" />
+					</div>
+					<div
+						onClick={() => onKeyDownHandler({ keyCode: 37 })}
+						className="arrow-container left"
+					>
+						<div className="arrow" />
+						<div className="arrow-root" />
+					</div>
+					<div
+						onClick={() => onKeyDownHandler({ keyCode: 39 })}
+						className="arrow-container right"
+					>
+						<div className="arrow" />
+						<div className="arrow-root" />
+					</div>
+					<div
+						onClick={() => onKeyDownHandler({ keyCode: 40 })}
+						className="arrow-container bottom"
+					>
+						<div className="arrow" />
+						<div className="arrow-root" />
+					</div>
 				</div>
 			</div>
 		</div>

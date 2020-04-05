@@ -1,6 +1,7 @@
-* {
+body * {
 	margin: 0;
 	padding: 0;
+	display: block;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -12,7 +13,7 @@
 }
 
 .container {
-	background-color: aqua;
+	/* background-color: aqua; */
 	width: 420px;
 	height: 330px;
 	position: fixed;
@@ -58,6 +59,10 @@
 	font-weight: bold;
 }
 
+.die .mobile {
+	display: none !important;
+}
+
 .die-btn {
 	position: relative;
 	left: 50%;
@@ -82,18 +87,28 @@
 
 @media screen and (max-width: 800px) {
 	.container {
-		background-color: aqua;
+		/* background-color: aqua; */
 		width: calc(100vw - 20px);
-		height: calc(width);
+		height: 0;
+		padding-top: calc((100%) / 14 * 11);
 		position: fixed;
 		top: 80px;
 		left: 50%;
 		transform: translate(-50%, 0%);
 	}
 
+	.content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+
 	.cell {
 		width: calc(100% / 14);
-		height: calc(width);
+		padding-top: calc(100% / 14);
+		height: 0;
 		float: left;
 		background-color: white;
 		box-shadow: 0 0 0 1px black;
@@ -106,12 +121,27 @@
 		height: 300px;
 	}
 
+	.ctrl-container {
+		position: absolute;
+		margin-top: 100px;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+
 	.controller .arrow-container {
 		width: 50px;
 		height: 50px;
 		position: absolute;
-		/* left: 50%;
-		transform: translate(-50%, 0); */
+	}
+
+	.controller .arrow-container:active > .arrow {
+		background: linear-gradient(135deg, rgb(252, 0, 0) 50%, transparent 50%);
+	}
+
+	.controller .arrow-container:active > .arrow-root {
+		background-color: rgb(252, 0, 0);
 	}
 
 	.controller .arrow {
@@ -119,18 +149,9 @@
 		width: 50px;
 		position: relative;
 		z-index: 0;
-		/* transform-origin: 100% 50%; */
 		transform: rotate(45deg);
 		border-radius: 5px;
 		background: linear-gradient(135deg, #272b66 50%, transparent 50%);
-		/* linear-gradient(72deg, #2d559f 75.48%, transparent 75.48%),
-			linear-gradient(-36deg, #9ac147 42.34%, transparent 42.34%) 100% 0,
-			linear-gradient(-72deg, #639b47 75.48%, transparent 75.48%) 100% 0,
-			linear-gradient(36deg, transparent 57.66%, #e1e23b 57.66%) 100% 100%,
-			linear-gradient(72deg, transparent 24.52%, #f7941e 24.52%) 100% 100%,
-			linear-gradient(-36deg, transparent 57.66%, #662a6c 57.66%) 0 100%,
-			linear-gradient(-72deg, transparent 24.52%, #9a1d34 24.52%) 0 100%,
-			#43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 100%; */
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}
@@ -166,5 +187,24 @@
 		left: 50%;
 		top: 50px;
 		transform: translate(40px, 0%) rotate(90deg);
+	}
+
+	.die {
+		width: calc(100vw - 20px);
+		padding-top: calc((100%) / 14 * 11);
+		height: 0;
+	}
+
+	.die-btn {
+		display: none;
+	}
+
+	.die .mobile {
+		display: block !important;
+		width: 13rem;
+	}
+
+	.die .table {
+		display: none !important;
 	}
 }

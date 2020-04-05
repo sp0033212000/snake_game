@@ -7,14 +7,15 @@ import Row from "./Row";
 const App = () => {
 	const {
 		state: { relay },
-		start
+		start,
 	} = useContext(SnakeContext);
 
 	const uiResetBtn = () => {
 		return (
 			<div className="die">
 				<div>
-					<div className="die-title">Start Game</div>
+					<div className="die-title table">Start Game</div>
+					<div className="die-title mobile">Click Arrow Start</div>
 					<button onClick={start} className="die-btn">
 						Start
 					</button>
