@@ -76,11 +76,13 @@ const Container = ({ children }) => {
 	useInterval(move, relay);
 
 	return (
-		<div className="body" ref={ref} tabIndex="0" onKeyDown={onKeyDownHandler}>
+		<div className="body">
 			<div className="container">
 				<div className="content">
 					<div className="score">Your Score: {snake.length - 1}</div>
-					{children}
+					<div ref={ref} tabIndex="0" onKeyDown={onKeyDownHandler}>
+						{children}
+					</div>
 				</div>
 			</div>
 			<div className="controller">

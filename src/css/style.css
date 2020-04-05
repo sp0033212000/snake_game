@@ -1,15 +1,15 @@
 body * {
 	margin: 0;
 	padding: 0;
-	display: block;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
 
 .body {
-	width: 100vw;
-	height: 100vh;
+	/* width: 100vw; */
+	/* height: 100vh; */
+	/* overflow: hidden; */
 }
 
 .container {
@@ -103,6 +103,20 @@ body * {
 		left: 0;
 		bottom: 0;
 		right: 0;
+	}
+
+	.score {
+		position: absolute;
+		background-color: white !important;
+		width: 100vw;
+		text-align: center;
+		height: 2rem;
+		line-height: 2rem;
+		top: -0.5rem;
+		/* left: 50%; */
+		/* transform: translate(-50%, -3rem); */
+		font-family: fantasy;
+		font-size: 1.5rem;
 	}
 
 	.cell {
@@ -201,7 +215,7 @@ body * {
 
 	.die .mobile {
 		display: block !important;
-		width: 13rem;
+		width: 100vw;
 	}
 
 	.die .table {
